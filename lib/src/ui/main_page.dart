@@ -1,5 +1,6 @@
 import 'package:coolicons/coolicons.dart';
 import 'package:fitness_app/src/data/feature_workouts.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
@@ -199,6 +200,111 @@ class _MainPageState extends State<MainPage> {
                           topRight: Radius.circular(32),
                         ),
                       ),
+                      padding: const EdgeInsets.fromLTRB(16, 32, 16, 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Body Workout',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          const Text(
+                            '20,000 Kcal this week',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 12,
+                            ),
+                          ),
+                          const SizedBox(height: 32),
+                          Expanded(
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: BarChart(
+                                BarChartData(
+                                    alignment: BarChartAlignment.spaceAround,
+                                    gridData: FlGridData(show: false),
+                                    titlesData: FlTitlesData(
+                                      bottomTitles: SideTitles(
+                                          showTitles: true,
+                                          getTitles: (value) {
+                                            switch (value.toInt()) {
+                                              case 0:
+                                                return 'S';
+                                              case 1:
+                                                return 'M';
+                                              case 2:
+                                                return 'T';
+                                              case 3:
+                                                return 'W';
+                                              case 4:
+                                                return 'T';
+                                              case 5:
+                                                return 'F';
+                                              case 6:
+                                                return 'S';
+                                              default:
+                                                return 'A';
+                                            }
+                                          }),
+                                      leftTitles: SideTitles(showTitles: false),
+                                      rightTitles: SideTitles(showTitles: false),
+                                      topTitles: SideTitles(showTitles: false),
+                                    ),
+                                    borderData: FlBorderData(show: false),
+                                    axisTitleData: FlAxisTitleData(show: false),
+                                    barGroups: [
+                                      BarChartGroupData(x: 0, barRods: [
+                                        BarChartRodData(
+                                            y: 16,
+                                            width: 2.5,
+                                            colors: [Colors.black])
+                                      ]),
+                                      BarChartGroupData(x: 1, barRods: [
+                                        BarChartRodData(
+                                            y: 15,
+                                            width: 2.5,
+                                            colors: [Colors.black])
+                                      ]),
+                                      BarChartGroupData(x: 2, barRods: [
+                                        BarChartRodData(
+                                            y: 12,
+                                            width: 2.5,
+                                            colors: [Colors.black])
+                                      ]),
+                                      BarChartGroupData(x: 3, barRods: [
+                                        BarChartRodData(
+                                            y: 10,
+                                            width: 2.5,
+                                            colors: [Colors.black])
+                                      ]),
+                                      BarChartGroupData(x: 4, barRods: [
+                                        BarChartRodData(
+                                            y: 16,
+                                            width: 2.5,
+                                            colors: [Colors.black])
+                                      ]),
+                                      BarChartGroupData(x: 5, barRods: [
+                                        BarChartRodData(
+                                            y: 8,
+                                            width: 2.5,
+                                            colors: [Colors.black])
+                                      ]),
+                                      BarChartGroupData(x: 6, barRods: [
+                                        BarChartRodData(
+                                            y: 16,
+                                            width: 2.5,
+                                            colors: [Colors.black])
+                                      ]),
+                                    ]),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   Positioned(
@@ -208,6 +314,32 @@ class _MainPageState extends State<MainPage> {
                     child: Container(
                       width: 120,
                       color: Colors.black,
+                      padding: const EdgeInsets.only(
+                        left: 24,
+                        top: 24,
+                        bottom: 16,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            'More'
+                            '\n'
+                            'Workout'
+                            '\n'
+                            'Progress',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          SizedBox(height: 32),
+                          RotatedBox(
+                            quarterTurns: 3,
+                            child: Icon(
+                              Icons.arrow_circle_down,
+                              color: Colors.white,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ],

@@ -16,6 +16,7 @@ dependencies:
   badges: any
   percent_indicator: any
   fl_chart: any
+  get: ^4.3.8
 
 dev_dependencies:
   flutter_test:
